@@ -6,32 +6,60 @@
     tools:context=".Calculadora">
 
     <LinearLayout
-        android:padding="12dp"
-        android:orientation="vertical"
-        android:background="@color/green"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/orange"
+        android:orientation="vertical"
+        android:padding="12dp">
+
         <TextView
             android:id="@+id/txt_title_calculadora"
             android:layout_width="match_parent"
-            android:background="@drawable/roundend_corners"
-            android:text="Calculadora"
-            android:textAlignment="center"
-            android:textSize="33dp"
             android:layout_height="wrap_content"
-            >
+            android:background="@drawable/roundend_corners"
+            android:text="@string/calculadora"
+            android:textAlignment="center"
+            android:textSize="30dp" />
 
-        </TextView>
+        <!-- Linha de código com os buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <!-- Button C -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="C"
+                android:textSize="25dp" />
+            <!-- Button +/- -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="+/-"
+                android:textSize="25dp" />
+            <!-- Button % -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="%"
+                android:textSize="25dp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/bt_bthome_calculadora"
-            android:backgroundTint="@color/black"
-            android:textSize="23dp"
-            android:layout_marginTop="100dp"
             android:layout_width="wrap_content"
-            android:text="Home"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"></Button>
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/home"
+            android:textSize="23dp" />
     </LinearLayout>
 
 </FrameLayout>

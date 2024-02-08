@@ -89,7 +89,7 @@ public class Calculadora extends Fragment {
         bt_clear = view.findViewById(R.id.button_C);
         bt_igual = view.findViewById(R.id.button_igual);
         
-        outdoor = view.findViewById(R.id.txt_title_calculadora);
+        //outdoor = view.findViewById(R.id.txt_title_calculadora);
         
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override

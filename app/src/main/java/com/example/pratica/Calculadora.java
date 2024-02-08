@@ -84,8 +84,8 @@ public class Calculadora extends Fragment {
         bt_multiplicar = view.findViewById(R.id.button_X);//
         bt_dividir = view.findViewById(R.id.button_divisao);//
         bt_porcentagem = view.findViewById(R.id.button_percentagem);//
-        bt_inverte = view.findViewById(R.id.button_negativo);
-        bt_virgula = view.findViewById(R.id.button_virgula);
+        //bt_inverte = view.findViewById(R.id.button_negativo);
+        bt_virgula = view.findViewById(R.id.butao_virgula);
         bt_clear = view.findViewById(R.id.button_C);
         bt_igual = view.findViewById(R.id.button_igual);
         

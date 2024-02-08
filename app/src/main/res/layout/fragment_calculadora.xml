@@ -226,12 +226,21 @@
             <!-- Button 0 -->
             <Button
                 android:id="@+id/button_zero"
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:backgroundTint="@color/darker_gray"
                 android:text="0"
                 android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/button_virgula"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/darker_gray"
+                android:text=","
+                android:textSize="23dp" />
 
             <!-- Button = -->
             <Button
@@ -242,6 +251,8 @@
                 android:backgroundTint="@color/orange"
                 android:text="="
                 android:textSize="23dp" />
+
+
 
         </LinearLayout>
 

@@ -12,22 +12,14 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-        <TextView
-            android:id="@+id/txt_title_calculadora"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/roundend_corners"
-            android:text="@string/calculadora"
-            android:textAlignment="center"
-            android:textSize="30dp" />
 
         <!-- Result TextView -->
         <TextView
             android:id="@+id/txt_resultado"
 
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/roundend_corners"
             android:text="Resultado"
             android:textAlignment="center"
@@ -232,7 +224,7 @@
                 android:backgroundTint="@color/darker_gray"
                 android:text="0"
                 android:textSize="25dp" />
-
+            <!-- Button , -->
             <Button
                 android:id="@+id/button_virgula"
                 android:layout_width="100dp"
@@ -252,10 +244,7 @@
                 android:text="="
                 android:textSize="23dp" />
 
-
-
         </LinearLayout>
-
 
         <Button
             android:id="@+id/bt_bthome_calculadora"

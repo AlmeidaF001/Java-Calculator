@@ -1,19 +1,18 @@
 package com.example.pratica;
 
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import java.util.ArrayList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import java.util.ArrayList;
-
+import android.widget.Toast;
+import android.app.Activity;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Calculadora#newInstance} factory method to
@@ -25,7 +24,7 @@ public class Calculadora extends Fragment {
     public String actual;
     public String displayer;
 
-    //Lista dos botões da calculadora e do display
+
     Button bthome;
     Button bt_zero;
     Button bt_um;
@@ -42,23 +41,15 @@ public class Calculadora extends Fragment {
     Button bt_multiplicar;
     Button bt_dividir;
     Button bt_porcentagem;
-    Button bt_inverte;
     Button bt_virgula;
     Button bt_clear;
     Button bt_igual;
 
     TextView outdoor;
-    /* 
-    public boolean lastisOp(){
-        int size = this.line.size()-1;
-        if(this.line.get(size) == "*" && this.line.get(size) == "/" && this.line.get(size) == "%" && this.line.get(size) == "-" && this.line.get(size) == "+"){
-            return true;
-        }
-        return false;
-    }
-    */
 
-    //Função que é chamada quando o fragment é criado
+
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -89,20 +80,29 @@ public class Calculadora extends Fragment {
 
         outdoor = view.findViewById(R.id.txt_resultado);
 
-
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("0");
-                outdoor.setText(displayer);
+                if(notBlank()){
+                    if(maxSize()){
+                        addSymbol("0");
+                        outdoor.setText(displayer);
+                    } else {
+                        Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
         bt_um.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("1");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("1");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -110,8 +110,12 @@ public class Calculadora extends Fragment {
         bt_dois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("2");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("2");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -119,113 +123,161 @@ public class Calculadora extends Fragment {
         bt_tres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("3");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("3");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_quatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("4");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("4");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
-        //Configuração de listeners dos botões da calculadora
+
         bt_cinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("5");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("5");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_seis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("6");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("6");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_sete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("7");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("7");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_oito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("8");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("8");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_nove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("9");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("9");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("+");
-                outdoor.setText(displayer);
+                if(canAdd()){
+                    addSymbol("+");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_subtrair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("-");
-                outdoor.setText(displayer);
+                if(canAdd()){
+                    addSymbol("-");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_multiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("x");
-                outdoor.setText(displayer);
+                if(canAdd()){
+                    addSymbol("x");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_dividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("/");
-                outdoor.setText(displayer);
+                if(canAdd()){
+                    addSymbol("/");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_porcentagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("%");
-                outdoor.setText(displayer);
+                if(canAdd()){
+                    addSymbol("%");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         bt_virgula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol(",");
-                outdoor.setText(displayer);
+                if(canAddPoint()){
+                    addSymbol(",");
+                    outdoor.setText(displayer);
+                }
             }
         });
 
         bt_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //this.line.clear();
-                //this.actual = "";
-                //this.displayer="";
+                reset();
                 outdoor.setText(displayer);
             }
         });
@@ -234,10 +286,12 @@ public class Calculadora extends Fragment {
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("=");
-                String resultado = String.valueOf(terminator());
-                outdoor.setText(resultado);
-                addSymbol("C");
+                if(canSolve()){
+                    addSymbol("=");
+                    String resultado = String.valueOf(terminator());
+                    outdoor.setText(resultado);
+                    reset();
+                }
             }
         });
 
@@ -245,7 +299,7 @@ public class Calculadora extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                Fragment home = Home.newInstance("", "");
+                Fragment home = Home.newInstance("","");
                 ft.replace(R.id.fragmentContainerView, home);
                 ft.addToBackStack(null);
                 ft.commit();
@@ -254,8 +308,8 @@ public class Calculadora extends Fragment {
         });
     }
 
-
     // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -263,12 +317,19 @@ public class Calculadora extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    //Construtor Padrão
     public Calculadora() {
+
     }
 
-    //Método que cria uma nova instância do fragmento da Calculadora e cria um pacote de argumentos (Bundle) para passar dados para o fragmento
-    //Define também os argumentos passados durante a criação do fragmento e retorna uma instancia do fragmento
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment Calculadora.
+     */
+    // TODO: Rename and change types and number of parameters
     public static Calculadora newInstance(String param1, String param2) {
         Calculadora fragment = new Calculadora();
         Bundle args = new Bundle();
@@ -279,13 +340,12 @@ public class Calculadora extends Fragment {
     }
 
 
+
     @Override
-    // Metodo chamado quando o Fragmento está a ser criado, e verifica se existem argumentos passados durante a criação do fragmento
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            //Recebe os argumentos passados durante a criação do fragmento
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -293,90 +353,118 @@ public class Calculadora extends Fragment {
     }
 
     @Override
-    //
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calculadora, container, false);
     }
 
-    //Faz a verificação se a expressão excedeu o limite de 19 Operações e Adicioona que corresponde a expressão digitada
-    //Aplica restrições de operações e números
-    public void addSymbol(String simbolo) {
-        if (this.line.size() < 19) {
-            switch (simbolo) {
+
+    public boolean canAdd(){
+        if(this.displayer.length() > 0){
+            char ultimo = this.displayer.charAt(this.displayer.length()-1);
+            if(ultimo == '+' || ultimo == '/' || ultimo == '%' || ultimo == '-' || ultimo == '*'){
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canAddPoint(){
+        if(this.actual.length() > 0){
+            if(this.actual.indexOf(".") == -1) return true;
+        }
+        return false;
+    }
+
+    public boolean maxSize(){
+        return this.actual.length() < 10;
+    }
+
+    public boolean notBlank(){
+        return this.actual.length() > 0;
+    }
+
+    public boolean canSolve(){
+        return this.line.size() >=3;
+    }
+
+    public void addSymbol(String simbolo){
+        if(this.line.size() < 17){
+            switch(simbolo){
                 case "0":
-                    this.actual += "0";
-                    this.displayer += "0";
+                    this.actual+="0";
+                    this.displayer+="0";
                     break;
                 case "1":
-                    this.actual += "1";
-                    this.displayer += "1";
+                    this.actual+="1";
+                    this.displayer+="1";
                     break;
                 case "2":
-                    this.actual += "2";
-                    this.displayer += "2";
+                    this.actual+="2";
+                    this.displayer+="2";
                     break;
                 case "3":
-                    this.actual += "3";
-                    this.displayer += "3";
+                    this.actual+="3";
+                    this.displayer+="3";
                     break;
                 case "4":
-                    this.actual += "4";
-                    this.displayer += "4";
+                    this.actual+="4";
+                    this.displayer+="4";
                     break;
                 case "5":
-                    this.actual += "5";
-                    this.displayer += "5";
+                    this.actual+="5";
+                    this.displayer+="5";
                     break;
                 case "6":
-                    this.actual += "6";
-                    this.displayer += "6";
+                    this.actual+="6";
+                    this.displayer+="6";
                     break;
                 case "7":
-                    this.actual += "7";
-                    this.displayer += "7";
+                    this.actual+="7";
+                    this.displayer+="7";
                     break;
                 case "8":
-                    this.actual += "8";
-                    this.displayer += "8";
+                    this.actual+="8";
+                    this.displayer+="8";
                     break;
                 case "9":
-                    this.actual += "9";
-                    this.displayer += "9";
+                    this.actual+="9";
+                    this.displayer+="9";
                     break;
                 case ",":
-                    this.actual += ".";
-                    this.displayer += ".";
+                    this.actual+=".";
+                    this.displayer+=".";
                     break;
                 case "+":
                     this.line.add(this.actual);
                     this.line.add("+");
-                    this.displayer += "+";
+                    this.displayer+="+";
                     this.actual = "";
                     break;
                 case "-":
                     this.line.add(this.actual);
                     this.line.add("-");
-                    this.displayer += "-";
+                    this.displayer+="-";
                     this.actual = "";
                     break;
                 case "x":
                     this.line.add(this.actual);
                     this.line.add("*");
-                    this.displayer += "*";
+                    this.displayer+="*";
                     this.actual = "";
                     break;
                 case "/":
                     this.line.add(this.actual);
                     this.line.add("/");
-                    this.displayer += "/";
+                    this.displayer+="/";
                     this.actual = "";
                     break;
                 case "%":
                     this.line.add(this.actual);
                     this.line.add("%");
-                    this.displayer += "%";
+                    this.displayer+="%";
                     this.actual = "";
                     break;
                 case "=":
@@ -384,14 +472,16 @@ public class Calculadora extends Fragment {
                     this.actual = "";
                     break;
             }
+        } else {
+            Toast.makeText(getActivity(), "Valor maximo de 17 operações atingido!", Toast.LENGTH_LONG).show();
         }
     }
 
-    //Realiza o calculo da expressão de acordo com a operação
-    public double calculate(String f, String op, String s) {
+
+    public double calculate(String f,String op,String s){
         double valorf = Double.parseDouble(f);
         double valors = Double.parseDouble(s);
-        switch (op) {
+        switch(op){
             case "+":
                 return valorf + valors;
             case "-":
@@ -401,49 +491,53 @@ public class Calculadora extends Fragment {
             case "*":
                 return valorf * valors;
             case "%":
-                return valorf * valors / 100;
+                return valorf * valors/100;
             default:
                 return 0;
         }
     }
 
 
-    //Realiza a avaliação da expressão em formato de lista
-    public double terminator() {
+
+    public void reset(){
+        this.line.clear();
+        this.actual = "";
+        this.displayer="";
+    }
+
+    public double terminator(){
         int i = 1;
         double result = 0;
-
-        while (this.line.contains("*")) {
+        while(this.line.contains("*")){
             int pos = this.line.indexOf("*");
-            result = this.calculate(this.line.get(pos - 1), "*", this.line.get(pos + 1));
-            this.line.set(pos - 1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos-1),"*",this.line.get(pos+1));
+            this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
 
-        while (this.line.contains("/")) {
+        while(this.line.contains("/")){
             int pos = this.line.indexOf("/");
-            result = this.calculate(this.line.get(pos - 1), "/", this.line.get(pos + 1));
-            this.line.set(pos - 1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos-1),"/",this.line.get(pos+1));
+            this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
 
-        while (this.line.contains("%")) {
+        while(this.line.contains("%")){
             int pos = this.line.indexOf("%");
-            result = this.calculate(this.line.get(pos - 1), "%", this.line.get(pos + 1));
-            this.line.set(pos - 1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos-1),"%",this.line.get(pos+1));
+            this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
 
-        while (this.line.size() > 1) {
-            result = this.calculate(this.line.get(i - 1), this.line.get(i), this.line.get(i + 1));
-            this.line.set(i - 1, String.valueOf(result));
+        while(this.line.size() > 1){
+            result = this.calculate(this.line.get(i-1),this.line.get(i),this.line.get(i+1));
+            this.line.set(i-1,String.valueOf(result));
             this.line.remove(i);
             this.line.remove(i);
         }
         return result;
     }
-
 }

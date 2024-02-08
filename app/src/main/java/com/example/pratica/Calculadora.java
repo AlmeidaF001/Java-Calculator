@@ -224,9 +224,9 @@ public class Calculadora extends Fragment {
         bt_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                this.line.clear();
-                this.actual = "";
-                this.displayer="";
+                //this.line.clear();
+                //this.actual = "";
+                //this.displayer="";
                 outdoor.setText(displayer);
             }
         });

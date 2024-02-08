@@ -41,21 +41,11 @@ public class Calculadora extends Fragment {
     Button bt_multiplicar;
     Button bt_dividir;
     Button bt_porcentagem;
-    Button bt_inverte;
     Button bt_virgula;
     Button bt_clear;
     Button bt_igual;
 
     TextView outdoor;
-    /* 
-    public boolean lastisOp(){
-        int size = this.line.size()-1;
-        if(this.line.get(size) == "*" && this.line.get(size) == "/" && this.line.get(size) == "%" && this.line.get(size) == "-" && this.line.get(size) == "+"){
-            return true;
-        }
-        return false;
-    }
-    */
 
     
 
@@ -84,7 +74,6 @@ public class Calculadora extends Fragment {
         bt_multiplicar = view.findViewById(R.id.button_X);//
         bt_dividir = view.findViewById(R.id.button_divisao);//
         bt_porcentagem = view.findViewById(R.id.button_percentagem);//
-        bt_inverte = view.findViewById(R.id.button_negativo);
         bt_virgula = view.findViewById(R.id.button_virgula);
         bt_clear = view.findViewById(R.id.button_C);
         bt_igual = view.findViewById(R.id.button_igual);
@@ -94,16 +83,26 @@ public class Calculadora extends Fragment {
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("0");
-                outdoor.setText(displayer);
+                if(notBlank()){
+                    if(maxSize()){
+                        addSymbol("0");
+                        outdoor.setText(displayer);
+                    } else {
+                        Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
         
         bt_um.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("1");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("1");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
@@ -111,8 +110,12 @@ public class Calculadora extends Fragment {
         bt_dois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("2");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("2");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
@@ -120,113 +123,161 @@ public class Calculadora extends Fragment {
         bt_tres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("3");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("3");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_quatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("4");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("4");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_cinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("5");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("5");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_seis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("6");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("6");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_sete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("7");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("7");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_oito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("8");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("8");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_nove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("9");
-                outdoor.setText(displayer);
+                if(maxSize()){
+                    addSymbol("9");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Tamanho maximo atingido", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    addSymbol("+");
-                    outdoor.setText(displayer);
+                    if(canAdd()){
+                        addSymbol("+");
+                        outdoor.setText(displayer);
+                    } else {
+                        Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                    }
             }
         });
         
         bt_subtrair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(canAdd()){
                     addSymbol("-");
                     outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_multiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(canAdd()){
                     addSymbol("x");
                     outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_dividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(canAdd()){
                     addSymbol("/");
                     outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_porcentagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(canAdd()){
                     addSymbol("%");
                     outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
         
         bt_virgula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol(",");
-                outdoor.setText(displayer);
+                if(canAddPoint()){
+                    addSymbol(",");
+                    outdoor.setText(displayer);
+                }
             }
         });
         
         bt_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                this.line.clear();
-                this.actual = "";
-                this.displayer="";
+                reset();
                 outdoor.setText(displayer);
             }
         });
@@ -238,7 +289,7 @@ public class Calculadora extends Fragment {
                 addSymbol("=");
                 String resultado = String.valueOf(terminator());
                 outdoor.setText(resultado);
-                addSymbol("C");
+                reset();
             }
         });
         
@@ -307,90 +358,117 @@ public class Calculadora extends Fragment {
     }
 
 
+    public boolean canAdd(){
+        if(this.displayer.length() > 0){
+            char ultimo = this.displayer.charAt(this.displayer.length()-1);
+            if(ultimo == '+' || ultimo == '/' || ultimo == '%' || ultimo == '-' || ultimo == '*'){
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canAddPoint(){
+        if(this.actual.length() > 0){
+            if(this.actual.indexOf(".") == -1) return true;
+        }
+        return false;
+    }
+
+    public boolean maxSize(){
+        return this.actual.length() < 10;
+    }
+
+    public boolean notBlank(){
+        return this.actual.length() > 0;
+    }
 
     public void addSymbol(String simbolo){
-        if(this.line.size() < 19){
-        switch(simbolo){
-            case "0":
-                this.actual+="0";
-                this.displayer+="0";
-                break;
-            case "1":
-                this.actual+="1";
-                this.displayer+="1";
-                break;
-            case "2":
-                this.actual+="2";
-                this.displayer+="2";
-                break;
-            case "3":
-                this.actual+="3";
-                this.displayer+="3";
-                break;
-            case "4":
-                this.actual+="4";
-                this.displayer+="4";
-                break;
-            case "5":
-                this.actual+="5";
-                this.displayer+="5";
-                break;
-            case "6":
-                this.actual+="6";
-                this.displayer+="6";
-                break;
-            case "7":
-                this.actual+="7";
-                this.displayer+="7";
-                break;
-            case "8":
-                this.actual+="8";
-                this.displayer+="8";
-                break;
-            case "9":
-                this.actual+="9";
-                this.displayer+="9";
-                break;
-            case ",":
-                this.actual+=".";
-                this.displayer+=".";
-                break;
-            case "+":
-                this.line.add(this.actual);
-                this.line.add("+");
-                this.displayer+="+";
-                this.actual = "";
-                break;
-            case "-":
-                this.line.add(this.actual);
-                this.line.add("-");
-                this.displayer+="-";
-                this.actual = "";
-                break;
-            case "x":
-                this.line.add(this.actual);
-                this.line.add("*");
-                this.displayer+="*";
-                this.actual = "";
-                break;
-            case "/":
-                this.line.add(this.actual);
-                this.line.add("/");
-                this.displayer+="/";
-                this.actual = "";
-                break;
-            case "%":
-                this.line.add(this.actual);
-                this.line.add("%");
-                this.displayer+="%";
-                this.actual = "";
-                break;
-            case "=":
-                this.line.add(this.actual);
-                this.actual = "";
-                break;
-        }
-        }
+            if(this.line.size() < 17){
+                switch(simbolo){
+                    case "0":
+                        this.actual+="0";
+                        this.displayer+="0";
+                        break;
+                    case "1":
+                        this.actual+="1";
+                        this.displayer+="1";
+                        break;
+                    case "2":
+                        this.actual+="2";
+                        this.displayer+="2";
+                        break;
+                    case "3":
+                        this.actual+="3";
+                        this.displayer+="3";
+                        break;
+                    case "4":
+                        this.actual+="4";
+                        this.displayer+="4";
+                        break;
+                    case "5":
+                        this.actual+="5";
+                        this.displayer+="5";
+                        break;
+                    case "6":
+                        this.actual+="6";
+                        this.displayer+="6";
+                        break;
+                    case "7":
+                        this.actual+="7";
+                        this.displayer+="7";
+                        break;
+                    case "8":
+                        this.actual+="8";
+                        this.displayer+="8";
+                        break;
+                    case "9":
+                        this.actual+="9";
+                        this.displayer+="9";
+                        break;
+                    case ",":
+                        this.actual+=".";
+                        this.displayer+=".";
+                        break;
+                    case "+":
+                        this.line.add(this.actual);
+                        this.line.add("+");
+                        this.displayer+="+";
+                        this.actual = "";
+                        break;
+                    case "-":
+                        this.line.add(this.actual);
+                        this.line.add("-");
+                        this.displayer+="-";
+                        this.actual = "";
+                        break;
+                    case "x":
+                        this.line.add(this.actual);
+                        this.line.add("*");
+                        this.displayer+="*";
+                        this.actual = "";
+                        break;
+                    case "/":
+                        this.line.add(this.actual);
+                        this.line.add("/");
+                        this.displayer+="/";
+                        this.actual = "";
+                        break;
+                    case "%":
+                        this.line.add(this.actual);
+                        this.line.add("%");
+                        this.displayer+="%";
+                        this.actual = "";
+                        break;
+                    case "=":
+                        this.line.add(this.actual);
+                        this.actual = "";
+                        break;
+                }
+            } else {
+                Toast.makeText(getActivity(), "Valor maximo de 17 operações atingido!", Toast.LENGTH_LONG).show();
+            }
     }
 
 
@@ -411,6 +489,14 @@ public class Calculadora extends Fragment {
           default:
             return 0;
         }
+    }
+
+
+
+    public void reset(){
+        this.line.clear();
+        this.actual = "";
+        this.displayer="";
     }
 
     public double terminator(){

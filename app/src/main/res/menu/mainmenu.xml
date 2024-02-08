@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-  <item android:id="@+id/mnu_calculadora_mainmenu"
-      android:icon="@drawable/chave"
-      android:title="Calculadora"
-      app:showAsAction="collapseActionView"></item>
+    <item
+        android:id="@+id/mnu_calculadora_mainmenu"
+        android:icon="@drawable/icon_calculadora"
+        android:title="Calculadora"
+        app:showAsAction="collapseActionView"></item>
 
-    <item android:id="@+id/mnu_selos_mainmenu"
+    <item
+        android:id="@+id/mnu_selos_mainmenu"
+        android:icon="@drawable/icon_selos"
         android:title="Selos"
         app:showAsAction="collapseActionView"></item>
 

@@ -11,12 +11,16 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        ImageView imageView = findViewById(R.id.img_home_screen);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar =findViewById(R.id.toolbar_toolbar_main);

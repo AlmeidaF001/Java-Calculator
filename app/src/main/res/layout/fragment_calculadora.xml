@@ -255,6 +255,7 @@
             android:backgroundTint="@color/orange"
             android:text="@string/home"
             android:textSize="23dp" />
+
     </LinearLayout>
 </FrameLayout>
 

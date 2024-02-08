@@ -286,12 +286,10 @@ public class Calculadora extends Fragment {
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canSolve()){
-                    addSymbol("=");
-                    String resultado = String.valueOf(terminator());
-                    outdoor.setText(resultado);
-                    reset();
-                }
+                addSymbol("=");
+                String resultado = String.valueOf(terminator());
+                outdoor.setText(resultado);
+                reset();
             }
         });
 
@@ -386,9 +384,6 @@ public class Calculadora extends Fragment {
         return this.actual.length() > 0;
     }
 
-    public boolean canSolve(){
-        return this.line.size() >=3;
-    }
 
     public void addSymbol(String simbolo){
         if(this.line.size() < 17){
@@ -541,3 +536,4 @@ public class Calculadora extends Fragment {
         return result;
     }
 }
+

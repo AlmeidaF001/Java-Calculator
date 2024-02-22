@@ -207,12 +207,12 @@ public class Calculadora extends Fragment {
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
-                    addSymbol("+");
-                    outdoor.setText(displayer);
-                } else {
-                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
-                }
+                    if(canAdd()){
+                        addSymbol("+");
+                        outdoor.setText(displayer);
+                    } else {
+                        Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                    }
             }
         });
 
@@ -286,10 +286,10 @@ public class Calculadora extends Fragment {
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymbol("=");
-                String resultado = String.valueOf(terminator());
-                outdoor.setText(resultado);
-                reset();
+                    addSymbol("=");
+                    String resultado = String.valueOf(terminator());
+                    outdoor.setText(resultado);
+                    reset();
             }
         });
 
@@ -369,6 +369,7 @@ public class Calculadora extends Fragment {
         return false;
     }
 
+
     public boolean canAddPoint(){
         if(this.actual.length() > 0){
             if(this.actual.indexOf(".") == -1) return true;
@@ -386,90 +387,90 @@ public class Calculadora extends Fragment {
 
 
     public void addSymbol(String simbolo){
-        if(this.line.size() < 17){
-            switch(simbolo){
-                case "0":
-                    this.actual+="0";
-                    this.displayer+="0";
-                    break;
-                case "1":
-                    this.actual+="1";
-                    this.displayer+="1";
-                    break;
-                case "2":
-                    this.actual+="2";
-                    this.displayer+="2";
-                    break;
-                case "3":
-                    this.actual+="3";
-                    this.displayer+="3";
-                    break;
-                case "4":
-                    this.actual+="4";
-                    this.displayer+="4";
-                    break;
-                case "5":
-                    this.actual+="5";
-                    this.displayer+="5";
-                    break;
-                case "6":
-                    this.actual+="6";
-                    this.displayer+="6";
-                    break;
-                case "7":
-                    this.actual+="7";
-                    this.displayer+="7";
-                    break;
-                case "8":
-                    this.actual+="8";
-                    this.displayer+="8";
-                    break;
-                case "9":
-                    this.actual+="9";
-                    this.displayer+="9";
-                    break;
-                case ",":
-                    this.actual+=".";
-                    this.displayer+=".";
-                    break;
-                case "+":
-                    this.line.add(this.actual);
-                    this.line.add("+");
-                    this.displayer+="+";
-                    this.actual = "";
-                    break;
-                case "-":
-                    this.line.add(this.actual);
-                    this.line.add("-");
-                    this.displayer+="-";
-                    this.actual = "";
-                    break;
-                case "x":
-                    this.line.add(this.actual);
-                    this.line.add("*");
-                    this.displayer+="*";
-                    this.actual = "";
-                    break;
-                case "/":
-                    this.line.add(this.actual);
-                    this.line.add("/");
-                    this.displayer+="/";
-                    this.actual = "";
-                    break;
-                case "%":
-                    this.line.add(this.actual);
-                    this.line.add("%");
-                    this.displayer+="%";
-                    this.actual = "";
-                    break;
-                case "=":
-                    this.line.add(this.actual);
-                    this.actual = "";
-                    break;
+            if(this.line.size() < 17){
+                switch(simbolo){
+                    case "0":
+                        this.actual+="0";
+                        this.displayer+="0";
+                        break;
+                    case "1":
+                        this.actual+="1";
+                        this.displayer+="1";
+                        break;
+                    case "2":
+                        this.actual+="2";
+                        this.displayer+="2";
+                        break;
+                    case "3":
+                        this.actual+="3";
+                        this.displayer+="3";
+                        break;
+                    case "4":
+                        this.actual+="4";
+                        this.displayer+="4";
+                        break;
+                    case "5":
+                        this.actual+="5";
+                        this.displayer+="5";
+                        break;
+                    case "6":
+                        this.actual+="6";
+                        this.displayer+="6";
+                        break;
+                    case "7":
+                        this.actual+="7";
+                        this.displayer+="7";
+                        break;
+                    case "8":
+                        this.actual+="8";
+                        this.displayer+="8";
+                        break;
+                    case "9":
+                        this.actual+="9";
+                        this.displayer+="9";
+                        break;
+                    case ",":
+                        this.actual+=".";
+                        this.displayer+=".";
+                        break;
+                    case "+":
+                        this.line.add(this.actual);
+                        this.line.add("+");
+                        this.displayer+="+";
+                        this.actual = "";
+                        break;
+                    case "-":
+                        this.line.add(this.actual);
+                        this.line.add("-");
+                        this.displayer+="-";
+                        this.actual = "";
+                        break;
+                    case "x":
+                        this.line.add(this.actual);
+                        this.line.add("*");
+                        this.displayer+="*";
+                        this.actual = "";
+                        break;
+                    case "/":
+                        this.line.add(this.actual);
+                        this.line.add("/");
+                        this.displayer+="/";
+                        this.actual = "";
+                        break;
+                    case "%":
+                        this.line.add(this.actual);
+                        this.line.add("%");
+                        this.displayer+="%";
+                        this.actual = "";
+                        break;
+                    case "=":
+                        this.line.add(this.actual);
+                        this.actual = "";
+                        break;
+                }
+            } else {
+                Toast.makeText(getActivity(), "Valor maximo de 17 operações atingido!", Toast.LENGTH_LONG).show();
             }
-        } else {
-            Toast.makeText(getActivity(), "Valor maximo de 17 operações atingido!", Toast.LENGTH_LONG).show();
-        }
     }
 
 
@@ -533,7 +534,7 @@ public class Calculadora extends Fragment {
             this.line.remove(i);
             this.line.remove(i);
         }
-        return result;
+      return result;
     }
 }
-
+      

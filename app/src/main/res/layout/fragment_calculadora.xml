@@ -42,7 +42,6 @@
                 android:backgroundTint="@color/gray"
                 android:text="Del"
                 android:textSize="25dp" />
-            <!-- Button C -->
 
             <Button
                 android:id="@+id/button_C"
@@ -52,6 +51,7 @@
                 android:backgroundTint="@color/gray"
                 android:text="C"
                 android:textSize="25dp" />
+
 
             <!-- Button % -->
             <Button

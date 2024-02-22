@@ -298,16 +298,11 @@ public class Calculadora extends Fragment {
             public void onClick(View v) {
 
                 if(canSolve() && notBlank()){
-                    addSymbol("=");
-                    String resultado = String.valueOf(terminator());
-                    outdoor.setText(resultado);
-                    reset();
-                }
-
                 addSymbol("=");
                 String resultado = String.valueOf(terminator());
                 outdoor.setText(resultado);
                 reset();
+                }
 
             }
         });
@@ -407,6 +402,7 @@ public class Calculadora extends Fragment {
         return this.line.size()%2 == 0;
     }
 
+    
     public boolean canAddZero(){
         return !this.actual.equals("0");
     }
@@ -573,6 +569,11 @@ public class Calculadora extends Fragment {
             this.line.remove(i);
         }
         return result;
+
+      }
+      
+
     }
+
 
 }

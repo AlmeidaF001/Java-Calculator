@@ -12,16 +12,24 @@
         android:orientation="vertical"
         android:padding="30dp">
 
+        <TextView
+            android:id="@+id/txt_title_calculadora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundend_corners"
+            android:text="@string/calculadora"
+            android:textAlignment="center"
+            android:textSize="30dp" />
 
         <!-- Result TextView -->
         <TextView
             android:id="@+id/txt_resultado"
 
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
             android:background="@drawable/roundend_corners"
-            android:text=""
+            android:text="Resultado"
             android:textAlignment="center"
 
             android:textSize="30dp" />
@@ -36,7 +44,7 @@
             <!-- Button C -->
             <Button
                 android:id="@+id/button_C"
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
@@ -46,7 +54,7 @@
             <!-- Button % -->
             <Button
                 android:id="@+id/button_percentagem"
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
@@ -56,7 +64,7 @@
             <!-- Button / -->
             <Button
                 android:id="@+id/button_divisao"
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
@@ -218,21 +226,12 @@
             <!-- Button 0 -->
             <Button
                 android:id="@+id/button_zero"
-                android:layout_width="200dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/darker_gray"
                 android:text="0"
                 android:textSize="25dp" />
-            <!-- Button , -->
-            <Button
-                android:id="@+id/button_virgula"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/darker_gray"
-                android:text=","
-                android:textSize="23dp" />
 
             <!-- Button = -->
             <Button
@@ -245,7 +244,7 @@
                 android:textSize="23dp" />
 
         </LinearLayout>
-        <!--Botão Home -->
+
         <Button
             android:id="@+id/bt_bthome_calculadora"
             android:layout_width="wrap_content"
@@ -255,7 +254,6 @@
             android:backgroundTint="@color/orange"
             android:text="@string/home"
             android:textSize="23dp" />
-
     </LinearLayout>
 </FrameLayout>
 

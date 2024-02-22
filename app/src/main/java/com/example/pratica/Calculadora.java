@@ -23,8 +23,8 @@ public class Calculadora extends Fragment {
     public ArrayList<String> line;
     public String actual;
     public String displayer;
-    
-    
+
+
     Button bthome;
     Button bt_zero;
     Button bt_um;
@@ -47,7 +47,7 @@ public class Calculadora extends Fragment {
 
     TextView outdoor;
 
-    
+
 
 
     @Override
@@ -56,7 +56,7 @@ public class Calculadora extends Fragment {
         this.actual = "";
         this.displayer = "";
         this.line = new ArrayList<String>();
-        
+
         bthome = view.findViewById(R.id.bt_bthome_calculadora);
 
         bt_zero = view.findViewById(R.id.button_zero); //
@@ -77,9 +77,9 @@ public class Calculadora extends Fragment {
         bt_virgula = view.findViewById(R.id.button_virgula);
         bt_clear = view.findViewById(R.id.button_C);
         bt_igual = view.findViewById(R.id.button_igual);
-        
-        outdoor = view.findViewById(R.id.txt_title_calculadora);
-        
+
+        outdoor = view.findViewById(R.id.txt_resultado);
+
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_um.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,8 +105,8 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
-        
+
+
         bt_dois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,8 +118,8 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
-        
+
+
         bt_tres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +131,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_quatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +143,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_cinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +155,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_seis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +167,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_sete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,7 +179,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_oito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,7 +191,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_nove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,7 +203,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -215,7 +215,7 @@ public class Calculadora extends Fragment {
                     }
             }
         });
-        
+
         bt_subtrair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,7 +227,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_multiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,7 +239,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_dividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -251,7 +251,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_porcentagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,7 +263,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_virgula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,7 +273,7 @@ public class Calculadora extends Fragment {
                 }
             }
         });
-        
+
         bt_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,8 +281,8 @@ public class Calculadora extends Fragment {
                 outdoor.setText(displayer);
             }
         });
-        
-        
+
+
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -292,7 +292,7 @@ public class Calculadora extends Fragment {
                     reset();
             }
         });
-        
+
         bthome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -337,7 +337,7 @@ public class Calculadora extends Fragment {
         return fragment;
     }
 
-    
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -368,6 +368,7 @@ public class Calculadora extends Fragment {
         }
         return false;
     }
+
 
     public boolean canAddPoint(){
         if(this.actual.length() > 0){
@@ -477,18 +478,18 @@ public class Calculadora extends Fragment {
         double valorf = Double.parseDouble(f);
         double valors = Double.parseDouble(s);
         switch(op){
-          case "+":
-            return valorf + valors;
-          case "-":
-            return valorf - valors;
-          case "/":
-            return valorf / valors;
-          case "*":
-            return valorf * valors;
-          case "%":
-            return valorf * valors/100;
-          default:
-            return 0;
+            case "+":
+                return valorf + valors;
+            case "-":
+                return valorf - valors;
+            case "/":
+                return valorf / valors;
+            case "*":
+                return valorf * valors;
+            case "%":
+                return valorf * valors/100;
+            default:
+                return 0;
         }
     }
 
@@ -509,24 +510,24 @@ public class Calculadora extends Fragment {
             this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
-          }
-          
-          while(this.line.contains("/")){
+        }
+
+        while(this.line.contains("/")){
             int pos = this.line.indexOf("/");
             result = this.calculate(this.line.get(pos-1),"/",this.line.get(pos+1));
             this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
-          }
-          
-          while(this.line.contains("%")){
+        }
+
+        while(this.line.contains("%")){
             int pos = this.line.indexOf("%");
             result = this.calculate(this.line.get(pos-1),"%",this.line.get(pos+1));
             this.line.set(pos-1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
-          }
-        
+        }
+
         while(this.line.size() > 1){
             result = this.calculate(this.line.get(i-1),this.line.get(i),this.line.get(i+1));
             this.line.set(i-1,String.valueOf(result));

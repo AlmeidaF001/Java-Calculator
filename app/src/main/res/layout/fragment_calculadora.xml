@@ -21,7 +21,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/roundend_corners"
-            android:text=""
+            android:text="00.00"
             android:textAlignment="center"
 
             android:textSize="30dp" />
@@ -35,21 +35,21 @@
 
             <!-- Button C -->
             <Button
+                android:id="@+id/button_DEL"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gray"
+                android:text="Del"
+                android:textSize="25dp" />
+
+            <Button
                 android:id="@+id/button_C"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="C"
-                android:textSize="25dp" />
-
-            <Button
-                android:id="@+id/button_DEL"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/gray"
-                android:text="DEL"
                 android:textSize="25dp" />
 
 

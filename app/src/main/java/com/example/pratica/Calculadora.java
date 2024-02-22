@@ -43,6 +43,7 @@ public class Calculadora extends Fragment {
     Button bt_porcentagem;
     Button bt_virgula;
     Button bt_clear;
+    Button bt_delete;
     Button bt_igual;
 
     TextView outdoor;
@@ -76,6 +77,7 @@ public class Calculadora extends Fragment {
         bt_porcentagem = view.findViewById(R.id.button_percentagem);//
         bt_virgula = view.findViewById(R.id.button_virgula);
         bt_clear = view.findViewById(R.id.button_C);
+        bt_delete = view.findViewById(R.id.button_DEL);
         bt_igual = view.findViewById(R.id.button_igual);
 
         outdoor = view.findViewById(R.id.txt_resultado);
@@ -83,7 +85,7 @@ public class Calculadora extends Fragment {
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(notBlank()){
+                if(canAddZero()){
                     if(maxSize()){
                         addSymbol("0");
                         outdoor.setText(displayer);
@@ -207,12 +209,12 @@ public class Calculadora extends Fragment {
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(canAdd()){
-                        addSymbol("+");
-                        outdoor.setText(displayer);
-                    } else {
-                        Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
-                    }
+                if(canAdd()){
+                    addSymbol("+");
+                    outdoor.setText(displayer);
+                } else {
+                    Toast.makeText(getActivity(), "Operação invalida!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -282,14 +284,31 @@ public class Calculadora extends Fragment {
             }
         });
 
+        bt_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteLast();
+                outdoor.setText(displayer);
+            }
+        });
+
 
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(canSolve() && notBlank()){
                     addSymbol("=");
                     String resultado = String.valueOf(terminator());
                     outdoor.setText(resultado);
                     reset();
+                }
+
+                addSymbol("=");
+                String resultado = String.valueOf(terminator());
+                outdoor.setText(resultado);
+                reset();
+
             }
         });
 
@@ -369,7 +388,6 @@ public class Calculadora extends Fragment {
         return false;
     }
 
-
     public boolean canAddPoint(){
         if(this.actual.length() > 0){
             if(this.actual.indexOf(".") == -1) return true;
@@ -385,92 +403,112 @@ public class Calculadora extends Fragment {
         return this.actual.length() > 0;
     }
 
+    public boolean canSolve(){
+        return this.line.size()%2 == 0;
+    }
+
+    public boolean canAddZero(){
+        return !this.actual.equals("0");
+    }
+
+    public String bUltimo(){
+        return this.line.get(this.line.size()-1);
+    }
+
+    public void deleteLast(){
+        if(this.displayer.length() > 0) this.displayer = this.displayer.substring(0, this.displayer.length()-1);
+        if(notBlank()){
+            this.actual = this.actual.substring(0, this.actual.length()-1);
+        } else {
+            if(this.line.size() > 0){
+                this.line.remove(this.line.size()-1);
+                this.actual = this.line.get(this.line.size()-1);
+                this.line.remove(this.line.get(this.line.size()-1));
+            }
+        }
+    }
 
     public void addSymbol(String simbolo){
-            if(this.line.size() < 17){
-                switch(simbolo){
-                    case "0":
-                        this.actual+="0";
-                        this.displayer+="0";
-                        break;
-                    case "1":
-                        this.actual+="1";
-                        this.displayer+="1";
-                        break;
-                    case "2":
-                        this.actual+="2";
-                        this.displayer+="2";
-                        break;
-                    case "3":
-                        this.actual+="3";
-                        this.displayer+="3";
-                        break;
-                    case "4":
-                        this.actual+="4";
-                        this.displayer+="4";
-                        break;
-                    case "5":
-                        this.actual+="5";
-                        this.displayer+="5";
-                        break;
-                    case "6":
-                        this.actual+="6";
-                        this.displayer+="6";
-                        break;
-                    case "7":
-                        this.actual+="7";
-                        this.displayer+="7";
-                        break;
-                    case "8":
-                        this.actual+="8";
-                        this.displayer+="8";
-                        break;
-                    case "9":
-                        this.actual+="9";
-                        this.displayer+="9";
-                        break;
-                    case ",":
-                        this.actual+=".";
-                        this.displayer+=".";
-                        break;
-                    case "+":
-                        this.line.add(this.actual);
-                        this.line.add("+");
-                        this.displayer+="+";
-                        this.actual = "";
-                        break;
-                    case "-":
-                        this.line.add(this.actual);
-                        this.line.add("-");
-                        this.displayer+="-";
-                        this.actual = "";
-                        break;
-                    case "x":
-                        this.line.add(this.actual);
-                        this.line.add("*");
-                        this.displayer+="*";
-                        this.actual = "";
-                        break;
-                    case "/":
-                        this.line.add(this.actual);
-                        this.line.add("/");
-                        this.displayer+="/";
-                        this.actual = "";
-                        break;
-                    case "%":
-                        this.line.add(this.actual);
-                        this.line.add("%");
-                        this.displayer+="%";
-                        this.actual = "";
-                        break;
-                    case "=":
-                        this.line.add(this.actual);
-                        this.actual = "";
-                        break;
-                }
-            } else {
-                Toast.makeText(getActivity(), "Valor maximo de 17 operações atingido!", Toast.LENGTH_LONG).show();
-            }
+        switch(simbolo){
+            case "0":
+                this.actual+="0";
+                this.displayer+="0";
+                break;
+            case "1":
+                this.actual+="1";
+                this.displayer+="1";
+                break;
+            case "2":
+                this.actual+="2";
+                this.displayer+="2";
+                break;
+            case "3":
+                this.actual+="3";
+                this.displayer+="3";
+                break;
+            case "4":
+                this.actual+="4";
+                this.displayer+="4";
+                break;
+            case "5":
+                this.actual+="5";
+                this.displayer+="5";
+                break;
+            case "6":
+                this.actual+="6";
+                this.displayer+="6";
+                break;
+            case "7":
+                this.actual+="7";
+                this.displayer+="7";
+                break;
+            case "8":
+                this.actual+="8";
+                this.displayer+="8";
+                break;
+            case "9":
+                this.actual+="9";
+                this.displayer+="9";
+                break;
+            case ",":
+                this.actual+=".";
+                this.displayer+=".";
+                break;
+            case "+":
+                this.line.add(this.actual);
+                this.line.add("+");
+                this.displayer+="+";
+                this.actual = "";
+                break;
+            case "-":
+                this.line.add(this.actual);
+                this.line.add("-");
+                this.displayer+="-";
+                this.actual = "";
+                break;
+            case "x":
+                this.line.add(this.actual);
+                this.line.add("*");
+                this.displayer+="*";
+                this.actual = "";
+                break;
+            case "/":
+                this.line.add(this.actual);
+                this.line.add("/");
+                this.displayer+="/";
+                this.actual = "";
+                break;
+            case "%":
+                this.line.add(this.actual);
+                this.line.add("%");
+                this.displayer+="%";
+                this.actual = "";
+                break;
+            case "=":
+                this.line.add(this.actual);
+                this.actual = "";
+                break;
+        }
     }
 
 
@@ -534,7 +572,7 @@ public class Calculadora extends Fragment {
             this.line.remove(i);
             this.line.remove(i);
         }
-      return result;
+        return result;
     }
+
 }
-      

@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="Del"
-                android:textSize="25dp" />
+                android:textSize="23dp" />
             <!-- Button C -->
 
             <Button
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="C"
-                android:textSize="25dp" />
+                android:textSize="23dp" />
 
             <!-- Button % -->
             <Button
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="%"
-                android:textSize="25dp" />
+                android:textSize="23dp" />
 
             <!-- Button / -->
             <Button
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="/"
-                android:textSize="25dp" />
+                android:textSize="23dp" />
 
         </LinearLayout>
         <!--Segunda Linha -->

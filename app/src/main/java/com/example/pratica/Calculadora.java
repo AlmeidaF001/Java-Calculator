@@ -1,30 +1,27 @@
 package com.example.pratica;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import java.util.ArrayList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.Activity;
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Calculadora#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import java.util.ArrayList;
+
 public class Calculadora extends Fragment {
 
     public ArrayList<String> line;
     public String actual;
     public String displayer;
 
-
+    //region Inicialização dos botões e TextView
     Button bthome;
     Button bt_zero;
     Button bt_um;
@@ -45,21 +42,18 @@ public class Calculadora extends Fragment {
     Button bt_clear;
     Button bt_delete;
     Button bt_igual;
-
     TextView outdoor;
 
-
-
-
+    //endregion
     @Override
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.actual = "";
         this.displayer = "";
         this.line = new ArrayList<String>();
 
-        bthome = view.findViewById(R.id.bt_bthome_calculadora);
-
+        //Incialização dos botões e TextView
         bt_zero = view.findViewById(R.id.button_zero); //
         bt_um = view.findViewById(R.id.button_1);//
         bt_dois = view.findViewById(R.id.button_2);//
@@ -80,13 +74,16 @@ public class Calculadora extends Fragment {
         bt_delete = view.findViewById(R.id.button_DEL);
         bt_igual = view.findViewById(R.id.button_igual);
 
+        //Inicialização do TextView
         outdoor = view.findViewById(R.id.txt_resultado);
+        bthome = view.findViewById(R.id.bt_bthome_calculadora);
 
+        //region Tratamento de eventos dos botões
         bt_zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAddZero()){
-                    if(maxSize()){
+                if (canAddZero()) {
+                    if (maxSize()) {
                         addSymbol("0");
                         outdoor.setText(displayer);
                     } else {
@@ -99,7 +96,7 @@ public class Calculadora extends Fragment {
         bt_um.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("1");
                     outdoor.setText(displayer);
                 } else {
@@ -108,11 +105,10 @@ public class Calculadora extends Fragment {
             }
         });
 
-
         bt_dois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("2");
                     outdoor.setText(displayer);
                 } else {
@@ -125,7 +121,7 @@ public class Calculadora extends Fragment {
         bt_tres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("3");
                     outdoor.setText(displayer);
                 } else {
@@ -137,7 +133,7 @@ public class Calculadora extends Fragment {
         bt_quatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("4");
                     outdoor.setText(displayer);
                 } else {
@@ -149,7 +145,7 @@ public class Calculadora extends Fragment {
         bt_cinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("5");
                     outdoor.setText(displayer);
                 } else {
@@ -161,7 +157,7 @@ public class Calculadora extends Fragment {
         bt_seis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("6");
                     outdoor.setText(displayer);
                 } else {
@@ -173,7 +169,7 @@ public class Calculadora extends Fragment {
         bt_sete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("7");
                     outdoor.setText(displayer);
                 } else {
@@ -185,7 +181,7 @@ public class Calculadora extends Fragment {
         bt_oito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("8");
                     outdoor.setText(displayer);
                 } else {
@@ -197,7 +193,7 @@ public class Calculadora extends Fragment {
         bt_nove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(maxSize()){
+                if (maxSize()) {
                     addSymbol("9");
                     outdoor.setText(displayer);
                 } else {
@@ -209,7 +205,7 @@ public class Calculadora extends Fragment {
         bt_somar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
+                if (canAdd()) {
                     addSymbol("+");
                     outdoor.setText(displayer);
                 } else {
@@ -221,7 +217,7 @@ public class Calculadora extends Fragment {
         bt_subtrair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
+                if (canAdd()) {
                     addSymbol("-");
                     outdoor.setText(displayer);
                 } else {
@@ -233,7 +229,7 @@ public class Calculadora extends Fragment {
         bt_multiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
+                if (canAdd()) {
                     addSymbol("x");
                     outdoor.setText(displayer);
                 } else {
@@ -245,7 +241,7 @@ public class Calculadora extends Fragment {
         bt_dividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
+                if (canAdd()) {
                     addSymbol("/");
                     outdoor.setText(displayer);
                 } else {
@@ -257,7 +253,7 @@ public class Calculadora extends Fragment {
         bt_porcentagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAdd()){
+                if (canAdd()) {
                     addSymbol("%");
                     outdoor.setText(displayer);
                 } else {
@@ -269,7 +265,7 @@ public class Calculadora extends Fragment {
         bt_virgula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(canAddPoint()){
+                if (canAddPoint()) {
                     addSymbol(",");
                     outdoor.setText(displayer);
                 }
@@ -296,20 +292,21 @@ public class Calculadora extends Fragment {
         bt_igual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-=======
 
->>>>>>> 1494391104943def0ce2e46948cb8e1cd8c1626d
                 if(canSolve() && notBlank()){
                 addSymbol("=");
                 String resultado = String.valueOf(terminator());
                 outdoor.setText(resultado);
                 reset();
-                }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1494391104943def0ce2e46948cb8e1cd8c1626d
+                if (canSolve() && notBlank()) {
+                    addSymbol("=");
+                    String resultado = String.valueOf(terminator());
+                    outdoor.setText(resultado);
+                    reset();
+
+                }
+
             }
         });
 
@@ -317,21 +314,18 @@ public class Calculadora extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                Fragment home = Home.newInstance("","");
+                Fragment home = Home.newInstance("", "");
                 ft.replace(R.id.fragmentContainerView, home);
                 ft.addToBackStack(null);
                 ft.commit();
 
             }
-        });
+        });//endregion
     }
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -339,15 +333,7 @@ public class Calculadora extends Fragment {
 
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Calculadora.
-     */
-    // TODO: Rename and change types and number of parameters
+    // Método newInstance é usado para criar uma nova instância de um fragmento e configurar argumentos para essa instância.
     public static Calculadora newInstance(String param1, String param2) {
         Calculadora fragment = new Calculadora();
         Bundle args = new Bundle();
@@ -356,8 +342,6 @@ public class Calculadora extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -370,14 +354,14 @@ public class Calculadora extends Fragment {
 
     }
 
+    // Metodo que  cria e retorna a interface de utilizador associada ao fragmento.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calculadora, container, false);
     }
 
-
+    //Metodo que verifica se ainda é possivel adicionar um operator matematico á expressão atual .
     public boolean canAdd(){
         if(this.displayer.length() > 0){
             char ultimo = this.displayer.charAt(this.displayer.length()-1);
@@ -389,6 +373,7 @@ public class Calculadora extends Fragment {
         return false;
     }
 
+    //Metodo que verifica se é possivel adicionar uma virgula ao numero.
     public boolean canAddPoint(){
         if(this.actual.length() > 0){
             if(this.actual.indexOf(".") == -1) return true;
@@ -396,27 +381,32 @@ public class Calculadora extends Fragment {
         return false;
     }
 
+    //Metodo que verifica se a string actual tem menos de 10 caracteres
     public boolean maxSize(){
         return this.actual.length() < 10;
     }
 
+    //Metodo que verifica se a string actual não está vazia
     public boolean notBlank(){
         return this.actual.length() > 0;
     }
 
+    //metodo que verifica a conta matematica é possivel de resolver
     public boolean canSolve(){
         return this.line.size()%2 == 0;
     }
 
-    
+    //metodo que verifica se é possivel adicionar um digito zero.
     public boolean canAddZero(){
         return !this.actual.equals("0");
     }
 
+    //metodo que verifica se a string actual é negativa.
     public String bUltimo(){
         return this.line.get(this.line.size()-1);
     }
 
+    //metodo que remove o ultimo caracter da string actual e da lista line
     public void deleteLast(){
         if(this.displayer.length() > 0) this.displayer = this.displayer.substring(0, this.displayer.length()-1);
         if(notBlank()){
@@ -430,6 +420,7 @@ public class Calculadora extends Fragment {
         }
     }
 
+    // region Função addSymbol adiciona ao display o respetivo numero assinalado com base nos botões clicados.
     public void addSymbol(String simbolo){
         switch(simbolo){
             case "0":
@@ -503,7 +494,7 @@ public class Calculadora extends Fragment {
             case "%":
                 this.line.add(this.actual);
                 this.line.add("%");
-                this.displayer+="%";
+                this.displayer += "%";
                 this.actual = "";
                 break;
             case "=":
@@ -511,9 +502,9 @@ public class Calculadora extends Fragment {
                 this.actual = "";
                 break;
         }
-    }
+    }//endregion
 
-
+    // Função calculate realiza operações aritméticas com base em dois números com base num operador.
     public double calculate(String f,String op,String s){
         double valorf = Double.parseDouble(f);
         double valors = Double.parseDouble(s);
@@ -527,59 +518,61 @@ public class Calculadora extends Fragment {
             case "*":
                 return valorf * valors;
             case "%":
-                return valorf * valors/100;
+                return valorf * valors / 100;
             default:
                 return 0;
         }
     }
 
-
-
-    public void reset(){
+    // Função reset limpa a lista de strings "line", e as strings "actual" e "displayer".
+    public void reset() {
         this.line.clear();
         this.actual = "";
-        this.displayer="";
+        this.displayer = "";
     }
 
-    public double terminator(){
+    // O método terminator realiza operações aritméticas numa lista de strings chamada "line".
+    // Ele processa os operadores '*', '/', e '%' primeiro, seguidos pelos operadores restantes em ordem.
+    // O resultado final é retornado.
+    public double terminator() {
         int i = 1;
         double result = 0;
-        while(this.line.contains("*")){
+
+        // Processa operadores '*'
+        while (this.line.contains("*")) {
             int pos = this.line.indexOf("*");
-            result = this.calculate(this.line.get(pos-1),"*",this.line.get(pos+1));
-            this.line.set(pos-1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos - 1), "*", this.line.get(pos + 1));
+            this.line.set(pos - 1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
-
-        while(this.line.contains("/")){
+        // Processa operadores '/'
+        while (this.line.contains("/")) {
             int pos = this.line.indexOf("/");
-            result = this.calculate(this.line.get(pos-1),"/",this.line.get(pos+1));
-            this.line.set(pos-1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos - 1), "/", this.line.get(pos + 1));
+            this.line.set(pos - 1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
-
-        while(this.line.contains("%")){
+        // Processa operadores '%'
+        while (this.line.contains("%")) {
             int pos = this.line.indexOf("%");
-            result = this.calculate(this.line.get(pos-1),"%",this.line.get(pos+1));
-            this.line.set(pos-1, String.valueOf(result));
+            result = this.calculate(this.line.get(pos - 1), "%", this.line.get(pos + 1));
+            this.line.set(pos - 1, String.valueOf(result));
             this.line.remove(pos);
             this.line.remove(pos);
         }
-
-        while(this.line.size() > 1){
-            result = this.calculate(this.line.get(i-1),this.line.get(i),this.line.get(i+1));
-            this.line.set(i-1,String.valueOf(result));
+        // Processa operadores restantes por ordem logica
+        while (this.line.size() > 1) {
+            result = this.calculate(this.line.get(i - 1), this.line.get(i), this.line.get(i + 1));
+            this.line.set(i - 1, String.valueOf(result));
             this.line.remove(i);
             this.line.remove(i);
         }
         return result;
 
-      }
-      
-
     }
 
-
 }
+
+

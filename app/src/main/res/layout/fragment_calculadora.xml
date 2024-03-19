@@ -51,6 +51,20 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="C"
+
+                android:textSize="25dp" />
+
+
+            <Button
+                android:id="@+id/button_DEL"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gray"
+                android:text="DEL"
+                android:textSize="20dp" />
+
+
                 android:textSize="23dp" />
 
             <!-- Button % -->

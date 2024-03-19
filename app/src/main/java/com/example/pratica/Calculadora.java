@@ -293,11 +293,18 @@ public class Calculadora extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(canSolve() && notBlank()){
+                addSymbol("=");
+                String resultado = String.valueOf(terminator());
+                outdoor.setText(resultado);
+                reset();
+
                 if (canSolve() && notBlank()) {
                     addSymbol("=");
                     String resultado = String.valueOf(terminator());
                     outdoor.setText(resultado);
                     reset();
+
                 }
 
             }

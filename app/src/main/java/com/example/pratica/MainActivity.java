@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.mnu_selos_mainmenu) {
             Toast.makeText(this, "Selos", Toast.LENGTH_SHORT).show();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            Fragment selos = Selos.newInstance("","");
+            ft.replace(R.id.fragmentContainerView, selos);
+            ft.addToBackStack(null);
+            ft.commit();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
                 android:text="DEL"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
 
             <!-- Button % -->

@@ -15,20 +15,20 @@ import androidx.fragment.app.Fragment;
 public class Selos extends Fragment {
 
     public Integer scinco;
-    public Integer stres;
+    public Integer sdois;
+    public Integer sum;
 
     TextView TROCO;
     EditText valorDinheiroEditText;
-    EditText selosConvertidosEditText;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.scinco = 0;
-        this.stres = 0;
+        this.sdois = 0;
+        this.sum = 0;
         TROCO = view.findViewById(R.id.converter_selos_troco); // Corrigido para pegar a referência correta do TextView
         valorDinheiroEditText = view.findViewById(R.id.converter_dinheiro_selos);
-        selosConvertidosEditText = view.findViewById(R.id.converter_selos_covertido);
         Button converterButton = view.findViewById(R.id.button_converter_selos);
 
         converterButton.setOnClickListener(new View.OnClickListener() {
@@ -38,8 +38,7 @@ public class Selos extends Fragment {
                 if (!valorDinheiroStr.isEmpty()) {
                     int valorDinheiro = Integer.parseInt(valorDinheiroStr);
                     trocos(valorDinheiro);
-                    TROCO.setText("Selos de 5 :" + scinco.toString() + "   " + "Selos de 3 :" + stres.toString());
-                    selosConvertidosEditText.setText(scinco.toString()); // Definindo o valor dos selos convertidos no EditText
+                    TROCO.setText("€5 =" + scinco.toString() + "\n€2 = " + sdois.toString()+"\n€1 = "+sum.toString());
                 }
             }
         });
@@ -90,50 +89,19 @@ public class Selos extends Fragment {
 
 
     public void trocos(int euros) {
-        if (euros >= 8) {
-            int Quoc = euros / 8;
-            int R = euros % 8;
-            switch (R) {
-                case 0:
-                    this.scinco = Quoc;
-                    this.stres = Quoc;
-                    break;
-                case 1:
-                    this.scinco = Quoc;
-                    this.stres = Quoc + 1;
-                    break;
-                case 2:
-                    this.scinco = Quoc;
-                    this.stres = Quoc + 2;
-                    break;
-                case 3:
-                    this.scinco = Quoc;
-                    this.stres = Quoc + 1;
-                    break;
-                case 4:
-                    this.scinco = Quoc;
-                    this.stres = Quoc + 2;
-                    break;
-                case 5:
-                    this.scinco = Quoc + 1;
-                    this.stres = Quoc;
-                    break;
-                case 6:
-                    this.scinco = Quoc;
-                    this.stres = Quoc + 1;
-                    break;
-                case 7:
-                    this.scinco = Quoc + 1;
-                    this.stres = Quoc;
-                    break;
-            }
-        } else {
-            if (euros == 3 || euros == 5) {
-                this.stres = 1;
-            } else if (euros == 6) {
-                this.stres = 2;
-            } else {
-                System.out.println("devolver euros");
+        this.scinco = 0;
+        this.sdois = 0;
+        this.sum = 0;
+        while(euros > 0){
+            if(euros>=5){
+                this.scinco++;
+                euros-=5;
+            }else if(euros >= 2){
+                this.sdois++;
+                euros-=2;
+            }else if(euros>=1){
+                this.sum++;
+                euros--;
             }
         }
     }

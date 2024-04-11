@@ -1,9 +1,11 @@
 package com.example.pratica;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,15 +17,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
+    Button open_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = findViewById(R.id.toolbar_toolbar_main);
         setSupportActionBar(toolbar);
+
         if(savedInstanceState == null){
-            FragmentTransaction ft =getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Fragment home = Home.newInstance("","");
             ft.add(R.id.fragmentContainerView,home);
             ft.addToBackStack(null);
@@ -49,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.fragmentContainerView, calculadora);
             ft.addToBackStack(null);
             ft.commit();
+        }
+        if (id == R.id.mnu_carros_mainmenu) {
+            Intent intent = new Intent();
+            intent.setClassName("com.example.fev16", "com.example.fev16.MainActivity");
+            startActivity(intent);
+            return true;
         }
         if (id == R.id.mnu_selos_mainmenu) {
             Toast.makeText(this, "Selos", Toast.LENGTH_SHORT).show();

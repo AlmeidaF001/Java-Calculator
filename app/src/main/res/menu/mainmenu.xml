@@ -13,4 +13,10 @@
         android:title="Selos"
         app:showAsAction="collapseActionView"></item>
 
+    <item
+        android:id="@+id/mnu_carros_mainmenu"
+        android:icon="@drawable/icon_carros"
+        android:title="Carros"
+        app:showAsAction="collapseActionView"></item>
+
 </menu>

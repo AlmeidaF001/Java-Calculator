@@ -30,10 +30,13 @@
         android:name="com.example.pratica.Home"
         android:layout_width="match_parent"
         android:layout_height="800dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:navGraph="@navigation/navegar"
         app:defaultNavHost="true"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_appbar_main" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_appbar_main"
+        app:navGraph="@navigation/navegar" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
